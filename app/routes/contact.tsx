@@ -1,0 +1,50 @@
+// app/routes/contact.tsx
+export default function Contact() {
+  return (
+    <div className="max-w-4xl mx-auto p-6 space-y-10">
+      <h1 className="text-3xl font-bold text-center">Kontaktai</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Contact Info */}
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-xl font-semibold">Telefonas</h2>
+            <a href="tel:+37061768411" className="text-blue-600 underline">
+              +370 617 68411
+            </a>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold">Email</h2>
+            <a
+              href="mailto:veisykla@example.com"
+              className="text-blue-600 underline"
+            >
+              veisykla@example.com
+            </a>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold">Vieta</h2>
+            <p>Vilniaus g. 123, Vilnius, LT</p>
+          </div>
+        </div>
+
+        {/* Embedded Google Map */}
+        <div>
+          <iframe
+            title="Kennel Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2302.6321170649895!2d25.279652815914174!3d54.6871556802806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd9401b98a5e1f%3A0x6f431167a9e2e7c9!2sVilnius!5e0!3m2!1sen!2slt!4v1624521621420!5m2!1sen!2slt"
+            width="100%"
+            height="300"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="rounded shadow"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  );
+}

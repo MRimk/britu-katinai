@@ -42,7 +42,55 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <header className="p-4 bg-gray-900 text-white">
+        <div className="container mx-auto flex justify-between items-center">
+          <a href="/" className="text-xl font-semibold">
+            Kennel
+          </a>
+          <nav className="space-x-4">
+            <a href="/" className="hover:underline">
+              Pagrindinis
+            </a>
+            <a href="/dogs" className="hover:underline">
+              Šunys
+            </a>
+            <a href="/about" className="hover:underline">
+              Apie Mus
+            </a>
+            <a href="/contact" className="hover:underline">
+              Kontaktai
+            </a>
+          </nav>
+        </div>
+      </header>
+      <main className="pt-6 container mx-auto">
+        <Outlet />
+      </main>
+      <footer className="mt-12 border-t pt-6 pb-4 text-center text-sm text-gray-500">
+        <div className="container mx-auto space-y-2">
+          <div>
+            Susisiekite{" "}
+            <a
+              href="mailto:veisykla@example.com"
+              className="text-blue-600 underline"
+            >
+              veisykla@example.com
+            </a>{" "}
+            arba{" "}
+            <a href="tel:+37061768411" className="text-blue-600 underline">
+              +370 617 68411
+            </a>
+          </div>
+          <div>
+            &copy; {new Date().getFullYear()} Šunų veisykla "Au Au". All rights
+            reserved.
+          </div>
+        </div>
+      </footer>
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
