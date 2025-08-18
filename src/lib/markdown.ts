@@ -31,8 +31,8 @@ function computeAge(birthdate: string): string {
         (now.getFullYear() - b.getFullYear()) * 12 +
         (now.getMonth() - b.getMonth()) -
         (now.getDate() < b.getDate() ? 1 : 0)
-    if (y <= 0) return `${months} mo`
-    return `${y} yr${y > 1 ? 's' : ''}`
+    if (y <= 0) return `${months} mėn.`
+    return `${y} m.`
 }
 
 export const cats: CatDoc[] = Object.entries(rawModules)

@@ -3,7 +3,7 @@ name: Silver
 breed: British Shorthair
 gender: Male
 birthdate: 2020-11-02
-image: /images/silver.jpg
+image: images/silver.jpg
 litter: L2020-11
 ---
 

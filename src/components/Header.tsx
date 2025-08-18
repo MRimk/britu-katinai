@@ -13,7 +13,7 @@ export default function Header() {
         borderBottom: "1px solid #eee",
       }}
     >
-      <h1 style={{ margin: 0, fontSize: "1.25rem" }}>Cat Kennel</h1>
+      <h1 style={{ margin: 0, fontSize: "1.25rem" }}>Britiškos katės</h1>
       <nav>
         <NavLink to="/" style={{ marginRight: 12 }}>
           Pagrindinis
