@@ -3,7 +3,7 @@ name: Luna
 breed: Russian Blue
 gender: Female
 birthdate: 2021-03-15
-image: images/luna.png
+image: images/luna.jpg
 litter: L2021-03
 mother: Mira
 father: Orion
