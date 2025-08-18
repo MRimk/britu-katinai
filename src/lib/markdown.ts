@@ -1,4 +1,3 @@
-// src/lib/markdown.ts
 import fm from 'front-matter'
 import { marked } from 'marked'
 
@@ -28,21 +27,27 @@ function computeAge(birthdate: string): string {
     const m = now.getMonth() - b.getMonth()
     const adj = m < 0 || (m === 0 && now.getDate() < b.getDate()) ? 1 : 0
     const y = years - adj
-    const months = (now.getFullYear() - b.getFullYear()) * 12 + (now.getMonth() - b.getMonth()) - (now.getDate() < b.getDate() ? 1 : 0)
+    const months =
+        (now.getFullYear() - b.getFullYear()) * 12 +
+        (now.getMonth() - b.getMonth()) -
+        (now.getDate() < b.getDate() ? 1 : 0)
     if (y <= 0) return `${months} mo`
     return `${y} yr${y > 1 ? 's' : ''}`
 }
 
-export const cats: CatDoc[] = Object.entries(rawModules).map(([path, raw]) => {
-    const parsed = fm<CatFrontmatter>(raw)
-    const fmData = parsed.attributes
-    const content = parsed.body
-    const slug = slugify(fmData.name)
-    const html = marked.parse(content)
-    return { ...fmData, slug, html }
-}).sort((a, b) => a.name.localeCompare(b.name))
+export const cats: CatDoc[] = Object.entries(rawModules)
+    .map(([_, raw]) => {
+        const parsed = fm<CatFrontmatter>(raw)
+        const data = parsed.attributes
+        const slug = slugify(data.name)
+        const html = marked.parse(parsed.body) as string
+        return { ...data, slug, html }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name))
 
-export function getCatBySlug(slug: string) { return cats.find(c => c.slug === slug) }
+export function getCatBySlug(slug: string) {
+    return cats.find((c) => c.slug === slug)
+}
 
 export function getLitters() {
     const map = new Map<string, CatDoc[]>()
@@ -52,8 +57,7 @@ export function getLitters() {
         map.get(c.litter)!.push(c)
     }
     for (const [, arr] of map) arr.sort((a, b) => a.name.localeCompare(b.name))
-    const entries = Array.from(map.entries()).sort((a, b) => b[0].localeCompare(a[0]))
-    return entries
+    return Array.from(map.entries()).sort((a, b) => b[0].localeCompare(a[0]))
 }
 
 export function formatDate(d: string) {
