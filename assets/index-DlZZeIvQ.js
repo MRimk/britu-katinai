@@ -69,7 +69,7 @@ name: Luna
 breed: Russian Blue
 gender: Female
 birthdate: 2021-03-15
-image: /images/luna.png
+image: images/luna.png
 litter: L2021-03
 mother: Mira
 father: Orion
@@ -81,7 +81,7 @@ name: Silver
 breed: British Shorthair
 gender: Male
 birthdate: 2020-11-02
-image: /images/silver.jpg
+image: images/silver.jpg
 litter: L2020-11
 ---
 
