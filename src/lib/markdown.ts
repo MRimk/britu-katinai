@@ -7,6 +7,7 @@ export type CatFrontmatter = {
     gender: 'Male' | 'Female'
     birthdate: string
     image: string
+    colour?: string
     litter?: string
     mother?: string
     father?: string

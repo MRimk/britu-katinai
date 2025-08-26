@@ -28,6 +28,11 @@ export default function CatDetail() {
             <Link to={`/litters/${cat.litter}`}>{cat.litter}</Link>
           </p>
         )}
+        {cat.colour && (
+          <p>
+            <strong>Spalva:</strong> {cat.colour}
+          </p>
+        )}
         {cat.mother && (
           <p>
             <strong>Motina:</strong> {cat.mother}
