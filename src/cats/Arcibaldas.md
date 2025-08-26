@@ -1,6 +1,6 @@
 ---
 name: Arcibaldas
-breed: British Shorthair cattery
+breed: British Shorthair
 gender: Male
 colour: BRI nv11
 birthdate: 2025-05-05

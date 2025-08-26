@@ -3,8 +3,9 @@ export default function Home() {
     <section>
       <h2>Sveiki atvykę!</h2>
       <p>
-        We are a small cattery focusing on health, temperament, and breed
-        standard. Explore our cats, read about us, and get in touch.
+        Mes esame nedidelė Britiškų trumpaplaukių kačių veisykla, orientuota į
+        sveikatą, temperamentą ir veislės standartą. Susipažinkite su mūsų
+        katėmis, skaitykite apie mus ir susisiekite.
       </p>
     </section>
   );

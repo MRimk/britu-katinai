@@ -3,8 +3,8 @@ export default function About() {
     <section>
       <h2>Apie mus</h2>
       <p>
-        Our cattery raises kittens in a home environment with careful
-        socialization and responsible breeding practices.
+        Mūsų veislynas yra skirtas mylintiems ir atsakingiems kačių augintojams. Mes
+        rūpinamės savo katėmis ir užtikriname, kad jos būtų sveikos bei laimingos.
       </p>
     </section>
   );

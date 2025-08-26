@@ -1,6 +1,6 @@
 ---
 name: Arizona
-breed: British Shorthair cattery
+breed: British Shorthair
 gender: Female
 colour: BRI ny25
 birthdate: 2025-05-05
