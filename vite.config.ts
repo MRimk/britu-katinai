@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 // With HashRouter, this isn't strictly necessary, but it's handy for assets.
 export default defineConfig({
   plugins: [react()],
-  base: '/kennel-website/',
+  base: '/britu-katinai/',
 })
