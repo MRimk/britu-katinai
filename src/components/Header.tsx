@@ -25,7 +25,7 @@ export default function Header() {
           Kontaktai
         </NavLink>
         <NavLink to="/cats" style={{ marginRight: 12 }}>
-          Tėvai
+          Katė
         </NavLink>
         <NavLink to="/litters">Vados</NavLink>
       </nav>

@@ -81,9 +81,6 @@ export default function CatDetail() {
         )}
         <div className="prose" dangerouslySetInnerHTML={{ __html: cat.html }} />
       </div>
-      <p>
-        <Link to="/cats">← Atgal į katinų sąrašą</Link>
-      </p>
     </article>
   );
 }

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { cats, ageString, formatDate } from "../lib/markdown";
+import { parents, ageString, formatDate } from "../lib/markdown";
 
-export default function Cats() {
+export default function Parents() {
   return (
     <section>
-      <h2>Tėvai</h2>
+      <h2>Katė</h2>
       <div className="grid">
-        {cats.map((c) => (
+        {parents.map((c) => (
           <Link key={c.slug} to={`/cats/${c.slug}`} className="card">
             <img src={c.image} alt={c.name} />
             <div className="card-body">

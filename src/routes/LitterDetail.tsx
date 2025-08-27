@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import {
   getLitters,
-  getLitterParentPhotos,
   cats as allCats,
 } from "../lib/markdown";
 
@@ -54,8 +53,6 @@ export default function LitterDetail() {
     ? allCats.find((c) => c.name === fatherName)
     : undefined;
 
-  const parentPhotos = litterId ? getLitterParentPhotos(litterId) : {};
-
   return (
     <section>
       <h2>Vada {litterId}</h2>
@@ -65,21 +62,6 @@ export default function LitterDetail() {
           {/* Mother */}
           {motherName && (
             <div className="card parent-card">
-              {parentPhotos.mom ? (
-                <Link
-                  to={
-                    motherDoc
-                      ? `/cats/${motherDoc.slug}`
-                      : `/litters/${litterId}`
-                  }
-                >
-                  <img
-                    src={parentPhotos.mom}
-                    alt={`Mama — ${motherName}`}
-                    loading="lazy"
-                  />
-                </Link>
-              ) : null}
               <div className="card-body">
                 <div className="muted">Mama</div>
                 {motherDoc ? (
@@ -96,21 +78,6 @@ export default function LitterDetail() {
           {/* Father */}
           {fatherName && (
             <div className="card parent-card">
-              {parentPhotos.dad ? (
-                <Link
-                  to={
-                    fatherDoc
-                      ? `/cats/${fatherDoc.slug}`
-                      : `/litters/${litterId}`
-                  }
-                >
-                  <img
-                    src={parentPhotos.dad}
-                    alt={`Tėvas — ${fatherName}`}
-                    loading="lazy"
-                  />
-                </Link>
-              ) : null}
               <div className="card-body">
                 <div className="muted">Tėtis</div>
                 {fatherDoc ? (

@@ -76,6 +76,8 @@ export const cats: CatDoc[] = Object.entries(rawModules)
     })
     .sort((a, b) => a.name.localeCompare(b.name))
 
+export const parents = cats.filter(c => !c.litter)
+
 export function getCatBySlug(slug: string) {
     return cats.find((c) => c.slug === slug)
 }
@@ -127,25 +129,4 @@ const litterPhotoIndex: Map<string, string[]> = (() => {
 /** Get all group photos for a litter (sorted by number ascending). */
 export function getLitterPhotos(litterId: string): string[] {
     return litterPhotoIndex.get(litterId) ?? []
-}
-
-type LitterParentPhotos = { mom?: string; dad?: string }
-
-const litterParentPhotoIndex: Map<string, LitterParentPhotos> = (() => {
-    const index = new Map<string, LitterParentPhotos>()
-    for (const [path, url] of Object.entries(litterPhotoModules)) {
-        const file = path.split('/').pop()! // e.g. "A2025-05-mom.jpeg"
-        const m = file.match(/^(.*)-(mom|dad)\.(?:jpe?g|png)$/i)
-        if (!m) continue
-        const litterId = m[1]
-        const role = m[2].toLowerCase() as 'mom' | 'dad'
-        if (!index.has(litterId)) index.set(litterId, {})
-        index.get(litterId)![role] = url
-    }
-    return index
-})()
-
-/** Get parent photos for a litter if available. */
-export function getLitterParentPhotos(litterId: string): LitterParentPhotos {
-    return litterParentPhotoIndex.get(litterId) ?? {}
 }
