@@ -17,6 +17,11 @@ export type CatDoc = CatFrontmatter & { slug: string; html: string }
 
 const rawModules = import.meta.glob('../cats/*.md', { as: 'raw', eager: true }) as Record<string, string>
 
+const litterPhotoModules = import.meta.glob('../assets/litters/*.{jpg,jpeg,png}', {
+    as: 'url',
+    eager: true,
+}) as Record<string, string>
+
 function slugify(name: string) {
     return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 }
@@ -67,3 +72,34 @@ export function formatDate(d: string) {
 }
 
 export const ageString = computeAge
+
+
+type LitterPhoto = { url: string; num: number }
+
+const litterPhotoIndex: Map<string, string[]> = (() => {
+    const byLitter = new Map<string, LitterPhoto[]>()
+
+    for (const [path, url] of Object.entries(litterPhotoModules)) {
+        const file = path.split('/').pop()! // e.g. "A2025-05-1.jpeg"
+        // Capture everything up to the last "-<number>" as litterId
+        const m = file.match(/^(.*)-(\d+)\.(?:jpe?g|png)$/i)
+        if (!m) continue
+        const litterId = m[1]
+        const num = parseInt(m[2], 10)
+        if (!byLitter.has(litterId)) byLitter.set(litterId, [])
+        byLitter.get(litterId)!.push({ url, num })
+    }
+
+    // sort numerically and store just URLs
+    const index = new Map<string, string[]>()
+    for (const [id, arr] of byLitter) {
+        arr.sort((a, b) => a.num - b.num)
+        index.set(id, arr.map((p) => p.url))
+    }
+    return index
+})()
+
+/** Get all group photos for a litter (sorted by number ascending). */
+export function getLitterPhotos(litterId: string): string[] {
+    return litterPhotoIndex.get(litterId) ?? []
+}

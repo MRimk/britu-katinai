@@ -72,12 +72,50 @@ main {
 .muted {
   color: #777;
 }
-.litter-list {
+/* .litter-list {
   list-style: none;
   padding: 0;
 }
 .litter-list li {
   margin: 0.5rem 0;
+} */
+
+.litter-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.litter-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+.litter-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+.litter-photos {
+  display: flex;
+  gap: 0.5rem;
+}
+.litter-photo img {
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+.litter-photos.placeholder {
+  width: 96px;
+  height: 72px;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.litter-title {
+  font-weight: 600;
 }
 footer {
   border-top: 1px solid #eee;

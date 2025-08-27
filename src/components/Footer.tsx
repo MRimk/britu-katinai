@@ -14,8 +14,8 @@ export default function Footer() {
     >
       <p>© {new Date().getFullYear()} Britiškos katės</p>
       <p>
-        📧 <a href="mailto:info@britiskos.lt">info@britiskos.lt</a> | 📞{" "}
-        <a href="tel:+37060000000">+370 600 00000</a>
+        📧 <a href="mailto:geridarbaitau@gmail.com">geridarbaitau@gmail.com</a> | 📞{" "}
+        <a href="tel:+37068110081">+370 681 10081</a>
       </p>
       <p>Adresas: Bla g. 8, Vilnius, Lietuva</p>
     </footer>
