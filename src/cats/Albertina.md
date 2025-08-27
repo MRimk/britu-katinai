@@ -5,7 +5,7 @@ gender: Female
 colour: BRI ny25
 birthdate: 2025-05-05
 images: images/albertina-1.jpeg
-litter: A2025-05
+litter: A
 mother: CH Uslada Bila Konvalia (BRI nv11)
 father: GICH Teddy of Tavereta (BRI ny25)
 ---

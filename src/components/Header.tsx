@@ -13,7 +13,7 @@ export default function Header() {
         borderBottom: "1px solid #eee",
       }}
     >
-      <h1 style={{ margin: 0, fontSize: "1.25rem" }}>Britiškos katės</h1>
+      <h1 style={{ margin: 0, fontSize: "1.25rem" }}>Britų katinai</h1>
       <nav>
         <NavLink to="/" style={{ marginRight: 12 }}>
           Pagrindinis
@@ -25,7 +25,7 @@ export default function Header() {
           Kontaktai
         </NavLink>
         <NavLink to="/cats" style={{ marginRight: 12 }}>
-          Visos katės
+          Tėvai
         </NavLink>
         <NavLink to="/litters">Vados</NavLink>
       </nav>

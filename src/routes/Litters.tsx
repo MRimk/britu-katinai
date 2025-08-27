@@ -42,7 +42,7 @@ export default function Litters() {
                   </Link>
                   <span className="muted">
                     {" "}
-                    — {cats.length} katė{cats.length > 1 ? "s" : ""}
+                    — {cats.length} katina{cats.length < 2 ? "s" : "i"}
                   </span>
                 </div>
               </div>

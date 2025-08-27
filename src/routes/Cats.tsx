@@ -4,7 +4,7 @@ import { cats, ageString, formatDate } from "../lib/markdown";
 export default function Cats() {
   return (
     <section>
-      <h2>Katės</h2>
+      <h2>Tėvai</h2>
       <div className="grid">
         {cats.map((c) => (
           <Link key={c.slug} to={`/cats/${c.slug}`} className="card">

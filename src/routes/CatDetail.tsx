@@ -6,7 +6,7 @@ export default function CatDetail() {
   const { slug } = useParams();
   const cat = getCatBySlug(slug || "");
 
-  if (!cat) return <p>Katė nerasta.</p>;
+  if (!cat) return <p>Katinas nerastas.</p>;
 
   const imgs =
     cat.images && cat.images.length > 0
@@ -82,7 +82,7 @@ export default function CatDetail() {
         <div className="prose" dangerouslySetInnerHTML={{ __html: cat.html }} />
       </div>
       <p>
-        <Link to="/cats">← Atgal į kačių sąrašą</Link>
+        <Link to="/cats">← Atgal į katinų sąrašą</Link>
       </p>
     </article>
   );

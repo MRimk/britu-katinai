@@ -3,8 +3,8 @@ export default function About() {
     <section>
       <h2>Apie mus</h2>
       <p>
-        Mūsų veislynas yra skirtas mylintiems ir atsakingiems kačių augintojams. Mes
-        rūpinamės savo katėmis ir užtikriname, kad jos būtų sveikos bei laimingos.
+        Mūsų veislynas yra skirtas mylintiems ir atsakingiems katinų augintojams. Mes
+        rūpinamės savo katinais ir užtikriname, kad jie būtų sveiki bei laimingi.
       </p>
     </section>
   );

@@ -5,7 +5,7 @@ gender: Male
 colour: BRI ny25
 birthdate: 2025-05-05
 images: images/aramsis-1.jpeg, images/aramsis-2.jpeg
-litter: A2025-05
+litter: A
 mother: CH Uslada Bila Konvalia (BRI nv11)
 father: GICH Teddy of Tavereta (BRI ny25)
 ---

@@ -12,12 +12,11 @@ export default function Footer() {
         borderTop: "1px solid #ddd",
       }}
     >
-      <p>© {new Date().getFullYear()} Britiškos katės</p>
+      <p>© {new Date().getFullYear()} Britų katinai</p>
       <p>
-        📧 <a href="mailto:geridarbaitau@gmail.com">geridarbaitau@gmail.com</a> | 📞{" "}
-        <a href="tel:+37068110081">+370 681 10081</a>
+        📧 <a href="mailto:geridarbaitau@gmail.com">geridarbaitau@gmail.com</a>{" "}
+        | 📞 <a href="tel:+37068110081">+370 681 10081</a>
       </p>
-      <p>Adresas: Bla g. 8, Vilnius, Lietuva</p>
     </footer>
   );
 }

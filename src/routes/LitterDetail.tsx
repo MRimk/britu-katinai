@@ -106,7 +106,7 @@ export default function LitterDetail() {
                 >
                   <img
                     src={parentPhotos.dad}
-                    alt={`Tėtis — ${fatherName}`}
+                    alt={`Tėvas — ${fatherName}`}
                     loading="lazy"
                   />
                 </Link>
