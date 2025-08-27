@@ -4,7 +4,7 @@ breed: British Shorthair
 gender: Female
 colour: BRI ny25
 birthdate: 2025-05-05
-image: images/arizona-1.jpeg
+images: images/arizona-1.jpeg, images/arizona-2.jpeg
 litter: A2025-05
 mother: CH Uslada Bila Konvalia (BRI nv11)
 father: GICH Teddy of Tavereta (BRI ny25)

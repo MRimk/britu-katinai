@@ -6,14 +6,35 @@ export type CatFrontmatter = {
     breed: string
     gender: 'Male' | 'Female'
     birthdate: string
-    image: string
+    image?: string
+    images?: string[] | string
     colour?: string
     litter?: string
     mother?: string
     father?: string
 }
 
-export type CatDoc = CatFrontmatter & { slug: string; html: string }
+export type CatDoc = CatFrontmatter & { slug: string; html: string, images: string[] }
+
+function normalizeImages(data: CatFrontmatter): string[] {
+    const out: string[] = []
+
+    if (Array.isArray(data.images)) {
+        out.push(...data.images)
+    } else if (typeof data.images === 'string') {
+        out.push(...data.images.split(',').map(s => s.trim()).filter(Boolean))
+    } else if (typeof data.image === 'string') {
+        // also support "image: a.jpg, b.jpg" just in case
+        if (data.image.includes(',')) {
+            out.push(...data.image.split(',').map(s => s.trim()).filter(Boolean))
+        } else {
+            out.push(data.image)
+        }
+    }
+
+    // de-dupe and keep order
+    return Array.from(new Set(out));
+}
 
 const rawModules = import.meta.glob('../cats/*.md', { as: 'raw', eager: true }) as Record<string, string>
 
@@ -47,7 +68,11 @@ export const cats: CatDoc[] = Object.entries(rawModules)
         const data = parsed.attributes
         const slug = slugify(data.name)
         const html = marked.parse(parsed.body) as string
-        return { ...data, slug, html }
+        // NEW: normalize images and keep "image" as the first one
+        const images = normalizeImages(data)
+        const image = images[0] ?? data.image // preserve legacy field for callers that still use cat.image
+
+        return { ...data, image, images, slug, html }
     })
     .sort((a, b) => a.name.localeCompare(b.name))
 
@@ -102,4 +127,25 @@ const litterPhotoIndex: Map<string, string[]> = (() => {
 /** Get all group photos for a litter (sorted by number ascending). */
 export function getLitterPhotos(litterId: string): string[] {
     return litterPhotoIndex.get(litterId) ?? []
+}
+
+type LitterParentPhotos = { mom?: string; dad?: string }
+
+const litterParentPhotoIndex: Map<string, LitterParentPhotos> = (() => {
+    const index = new Map<string, LitterParentPhotos>()
+    for (const [path, url] of Object.entries(litterPhotoModules)) {
+        const file = path.split('/').pop()! // e.g. "A2025-05-mom.jpeg"
+        const m = file.match(/^(.*)-(mom|dad)\.(?:jpe?g|png)$/i)
+        if (!m) continue
+        const litterId = m[1]
+        const role = m[2].toLowerCase() as 'mom' | 'dad'
+        if (!index.has(litterId)) index.set(litterId, {})
+        index.get(litterId)![role] = url
+    }
+    return index
+})()
+
+/** Get parent photos for a litter if available. */
+export function getLitterParentPhotos(litterId: string): LitterParentPhotos {
+    return litterParentPhotoIndex.get(litterId) ?? {}
 }

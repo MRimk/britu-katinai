@@ -72,13 +72,41 @@ main {
 .muted {
   color: #777;
 }
-/* .litter-list {
-  list-style: none;
-  padding: 0;
+
+.gallery {
+  margin-bottom: 1rem;
 }
-.litter-list li {
-  margin: 0.5rem 0;
-} */
+.gallery .hero {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+.gallery .thumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+.gallery .thumb {
+  border: 2px solid transparent;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.gallery .thumb.is-active {
+  border-color: var(--accent, #666);
+}
+.gallery .thumb img {
+  display: block;
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 6px;
+}
 
 .litter-list {
   list-style: none;
@@ -117,6 +145,24 @@ main {
 .litter-title {
   font-weight: 600;
 }
+.parents.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.parent-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: block;
+}
+.parent-card .card-body .muted {
+  font-size: 0.9rem;
+}
+
 footer {
   border-top: 1px solid #eee;
   margin-top: 2rem;

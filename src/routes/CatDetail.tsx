@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getCatBySlug, formatDate, ageString } from "../lib/markdown";
 
@@ -7,9 +8,44 @@ export default function CatDetail() {
 
   if (!cat) return <p>Katė nerasta.</p>;
 
+  const imgs =
+    cat.images && cat.images.length > 0
+      ? cat.images
+      : cat.image
+      ? [cat.image]
+      : [];
+  const [activeIdx, setActiveIdx] = useState(0);
+
   return (
     <article className="detail">
-      <img className="hero" src={cat.image} alt={cat.name} />
+      {/* Gallery */}
+      {imgs.length > 0 && (
+        <figure className="gallery">
+          <img
+            className="hero"
+            src={imgs[activeIdx]}
+            alt={`${cat.name} — nuotrauka ${activeIdx + 1}`}
+          />
+          {imgs.length > 1 && (
+            <div className="thumbs" role="list">
+              {imgs.map((src, i) => (
+                <button
+                  key={src}
+                  className={`thumb ${i === activeIdx ? "is-active" : ""}`}
+                  onClick={() => setActiveIdx(i)}
+                  aria-label={`Perjungti į nuotrauką ${i + 1}`}
+                >
+                  <img
+                    src={src}
+                    alt={`${cat.name} miniatiūra ${i + 1}`}
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </figure>
+      )}
       <div>
         <h2>{cat.name}</h2>
         <p>
